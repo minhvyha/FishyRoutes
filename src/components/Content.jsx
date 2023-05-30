@@ -1,10 +1,13 @@
-import React from 'react'
-import Node from './elements/Node'
+import React from "react";
+import Node from "./elements/Node";
 
 function Content() {
-  return (
-    <div></div>
-  )
+  let Nodes = <Node/>
+  for (let row = 0; row < 10; row++) {
+    Nodes = <Node/>; 
+  }
+
+  return <div className="w-screen">{Nodes}</div>;
 }
 
-export default Content
+export default Content;
