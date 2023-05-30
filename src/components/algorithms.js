@@ -44,6 +44,13 @@
 //             current.close()
 //     return False
 
+class QueueElement {
+  constructor(elem, priNo) {
+  this.element = elem;
+  this.priority = priNo;
+  }
+}
+
 class PriorityQueue {
   constructor() {
     this.queArr = [];
@@ -65,7 +72,7 @@ class PriorityQueue {
   dequeue() {
     document.write('</br>The dequeued element in the priority queue is : ');
     if (this.isEmpty()) return 'Underflow';
-    return this.queArr.shift();
+    return this.queArr.pop();
   }
   front() {
     if (this.isEmpty()) return 'No elements in Queue';
