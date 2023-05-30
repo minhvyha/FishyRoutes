@@ -3,7 +3,7 @@ import React from "react";
 function Instruction() {
   return (
     <div className="p-1 bg-slate-200 flex">
-      <ul className="flex justify-start">
+      <ul className=" flex flex-wrap justify-start">
         {/* Start Node icon */}
         <li
           className="flex m-3 cursor-pointer"
