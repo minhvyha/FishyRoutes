@@ -2,19 +2,37 @@ import React from "react";
 
 function Instruction() {
   return (
-    <div className="h10">
-      <ul>
-        <li className="flex">
-          <i className="fa-solid flex fa-paw w-7 h-7 justify-center items-center"></i>
+    <div className="p-1 bg-slate-200 flex">
+      <ul className="flex w-screen justify-start">
+        {/* Start Node icon */}
+        <li className="flex m-3">
+          <i className="fa-solid flex fa-paw w-7 h-7 justify-center items-center mr-1 "></i>
           Start Node
         </li>
-        <li className="flex">
-          <i className="fa-solid fa-fish w-7 h-7 flex justify-center items-center"></i>
+
+        {/* Target Node icon */}
+        <li className="flex m-3">
+          <i className="fa-solid fa-fish w-7 h-7 flex justify-center items-center mr-1"></i>
           Target Node
         </li>
-        <li className="flex">
-          <div className="bg-gray-800 w-7 h-7 "></div>
+
+        {/* Wall node icon */}
+        <li className="flex m-3">
+          <div className="bg-gray-800 w-7 h-7 mr-1"></div>
           Wall Node
+        </li>
+
+        {/* Visited Node icon */}
+        <li className="flex m-3">
+          <div className="bg-teal-400 w-7 h-7 mr-1"></div>
+          <div className="bg-violet-600 w-7 h-7 mr-1"></div>
+          Visited Nodes
+        </li>
+
+        {/* Shortest Path Node icon */}
+        <li className="flex m-3">
+          <div className="bg-yellow-300 w-7 h-7 mr-1"></div>
+          Shortest-path Node
         </li>
       </ul>
     </div>
