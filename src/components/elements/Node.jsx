@@ -2,7 +2,9 @@ import React from 'react'
 
 function Node() {
   return (
-    <div>Node</div>
+    <div className='w-4 h-4 bg-black'>
+
+    </div>
   )
 }
 
