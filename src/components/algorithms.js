@@ -10,7 +10,7 @@ class PriorityQueue {
   constructor() {
     this.queArr = [];
   }
-  enqueue(elem, priNo) {
+  put(elem, priNo) {
     let queueElem = new QueueElement(elem, priNo);
     let contain = false;
     for (let i = 0; i < this.queArr.length; i++) {
@@ -24,7 +24,7 @@ class PriorityQueue {
       this.queArr.push(queueElem);
     }
   }
-  dequeue() {
+  get() {
     if (this.isEmpty()) return null;
     return this.queArr.shift();
   }
@@ -51,6 +51,12 @@ class PriorityQueue {
 
 function aStar(grid, startNode, endNode) {
   var count = 0;
+  var openSet = new PriorityQueue()
+  openSet.put((count, startNode), 0)
+  var cameFrom = {}
+  var fScore = {}
+  var gScore = {}
+
 }
 
 // def algorithm(draw, grid, start, end):
