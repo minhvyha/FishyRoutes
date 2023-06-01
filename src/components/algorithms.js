@@ -1,3 +1,58 @@
+
+class QueueElement {
+  constructor(elem, priNo) {
+  this.element = elem;
+  this.priority = priNo;
+  }
+}
+
+class PriorityQueue {
+  constructor() {
+    this.queArr = [];
+  }
+  enqueue(elem, priNo) {
+    let queueElem = new QueueElement(elem, priNo);
+    let contain = false;
+    for (let i = 0; i < this.queArr.length; i++) {
+      if (this.queArr[i].priority > queueElem.priority) {
+        this.queArr.splice(i, 0, queueElem);
+        contain = true;
+        break;
+      }
+    }
+    if (!contain) {
+      this.queArr.push(queueElem);
+    }
+  }
+  dequeue() {
+    if (this.isEmpty()) return null;
+    return this.queArr.shift();
+  }
+  front() {
+    if (this.isEmpty()) return 'No elements in Queue';
+    return this.queArr[0];
+  }
+  rear() {
+    document.write('</br>The rear element of the priority queue is : ');
+    if (this.isEmpty()) return 'The Queue is Empty..!';
+    return this.queArr[this.queArr.length - 1];
+  }
+  isEmpty() {
+    return this.queArr.length == 0;
+  }
+  display() {
+    document.write('The Elements in the priority queue are : </br>');
+    let res_Str = '';
+    for (let i = 0; i < this.queArr.length; i++)
+      res_Str += this.queArr[i].element + ' ';
+    return res_Str;
+  }
+}
+
+function aStar(grid, startNode, endNode) {
+  var count = 0;
+}
+
 // def algorithm(draw, grid, start, end):
 //     count = 0
 //     open_set = PriorityQueue()
@@ -43,58 +98,3 @@
 //         if current != start:
 //             current.close()
 //     return False
-
-class QueueElement {
-  constructor(elem, priNo) {
-  this.element = elem;
-  this.priority = priNo;
-  }
-}
-
-class PriorityQueue {
-  constructor() {
-    this.queArr = [];
-  }
-  enqueue(elem, priNo) {
-    let queueElem = new QueueElement(elem, priNo);
-    let contain = false;
-    for (let i = 0; i < this.queArr.length; i++) {
-      if (this.queArr[i].priority > queueElem.priority) {
-        this.queArr.splice(i, 0, queueElem);
-        contain = true;
-        break;
-      }
-    }
-    if (!contain) {
-      this.queArr.push(queueElem);
-    }
-  }
-  dequeue() {
-    document.write('</br>The dequeued element in the priority queue is : ');
-    if (this.isEmpty()) return 'Underflow';
-    return this.queArr.pop();
-  }
-  front() {
-    if (this.isEmpty()) return 'No elements in Queue';
-    return this.queArr[0];
-  }
-  rear() {
-    document.write('</br>The rear element of the priority queue is : ');
-    if (this.isEmpty()) return 'The Queue is Empty..!';
-    return this.queArr[this.queArr.length - 1];
-  }
-  isEmpty() {
-    return this.queArr.length == 0;
-  }
-  display() {
-    document.write('The Elements in the priority queue are : </br>');
-    let res_Str = '';
-    for (let i = 0; i < this.queArr.length; i++)
-      res_Str += this.queArr[i].element + ' ';
-    return res_Str;
-  }
-}
-
-function aStar(grid, startNode, endNode) {
-  var count = 0;
-}
