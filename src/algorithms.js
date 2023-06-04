@@ -54,8 +54,17 @@ function aStar(grid, startNode, endNode) {
   var openSet = new PriorityQueue()
   openSet.put((count, startNode), 0)
   var cameFrom = {}
-  var fScore = {}
-  var gScore = {}
+  var fScore = []
+  var gScore = []
+  var INFINITY = Math.pow(10,1000)
+  for (const row of grid){
+    let tempRow = []
+    for (const col of row){
+      tempRow.push(INFINITY)
+    }
+    fScore.push(tempRow)
+    gScore.push(tempRow)
+  }
 
 }
 
