@@ -4,7 +4,7 @@ import Row from "./elements/Row";
 
 function Content() {
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
-  console.log(windowSize)
+  console.log(windowSize);
 
   let grid = [];
   for (let row = 0; row < 25; row++) {
@@ -16,8 +16,8 @@ function Content() {
   }
 
   return (
-    <div className="w-screen flex">
-      <div className="flex flex-col">{grid}</div>
+    <div className="w-screen flex justify-center items-center">
+      <div className="flex flex-col m-8">{grid}</div>
     </div>
   );
 }

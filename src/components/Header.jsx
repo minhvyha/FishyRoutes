@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
+import { MainPageContext } from '../App';
 function Header() {
   const options = [
     { value: 'dijkstra', label: `Dijkstra's Algorithm` },
