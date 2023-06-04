@@ -54,6 +54,7 @@ function aStar(grid, startNode, endNode) {
   var openSet = new PriorityQueue()
   openSet.put((count, startNode), 0)
   var cameFrom = {}
+  var openSetHash = []
   var fScore = []
   var gScore = []
   var INFINITY = Math.pow(10,1000)
@@ -64,8 +65,19 @@ function aStar(grid, startNode, endNode) {
     }
     fScore.push(tempRow)
     gScore.push(tempRow)
+    fScore[startNode.row][startNode.col] = hScore(startNode, endNode)
+    gScore[startNode.row][startNode.col] = 0
+    
   }
 
+  while (openSetHash){
+    
+  }
+
+}
+
+function hScore(node1, node2){
+  return Math.abs(node1.row - node2.row) + Math.abs(node1.col - node2.col)
 }
 
 // def algorithm(draw, grid, start, end):
