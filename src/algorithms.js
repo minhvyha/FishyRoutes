@@ -71,7 +71,8 @@ function aStar(grid, startNode, endNode) {
   }
 
   while (openSetHash){
-    
+    let currentNode = openSet.get()
+    openSetHash = openSetHash.filter(node => node.id !== currentNode.id)
   }
 
 }
