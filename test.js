@@ -1,3 +1,83 @@
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+
+  size() {
+    return this.heap.length;
+  }
+
+  isEmpty() {
+    return this.heap.length === 0;
+  }
+
+  enqueue(item, priority) {
+    const element = { item, priority };
+    this.heap.push(element);
+    this.heapifyUp(this.heap.length - 1);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    this.swap(0, this.heap.length - 1);
+    const removed = this.heap.pop();
+    this.heapifyDown(0);
+    return removed.item;
+  }
+
+  heapifyUp(index) {
+    let currentIndex = index;
+
+    while (currentIndex > 0) {
+      const parentIndex = Math.floor((currentIndex - 1) / 2);
+
+      if (this.heap[currentIndex].priority < this.heap[parentIndex].priority) {
+        this.swap(currentIndex, parentIndex);
+        currentIndex = parentIndex;
+      } else {
+        break;
+      }
+    }
+  }
+
+  heapifyDown(index) {
+    let currentIndex = index;
+    let smallestChildIndex = null;
+
+    while (currentIndex < this.heap.length) {
+      const leftChildIndex = 2 * currentIndex + 1;
+      const rightChildIndex = 2 * currentIndex + 2;
+
+      if (leftChildIndex < this.heap.length) {
+        smallestChildIndex = leftChildIndex;
+
+        if (
+          rightChildIndex < this.heap.length &&
+          this.heap[rightChildIndex].priority < this.heap[leftChildIndex].priority
+        ) {
+          smallestChildIndex = rightChildIndex;
+        }
+
+        if (this.heap[currentIndex].priority > this.heap[smallestChildIndex].priority) {
+          this.swap(currentIndex, smallestChildIndex);
+          currentIndex = smallestChildIndex;
+        } else {
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+  }
+
+  swap(index1, index2) {
+    [this.heap[index1], this.heap[index2]] = [this.heap[index2], this.heap[index1]];
+  }
+}
+
 function findPath(start, end, grid) {
   // Define a heuristic function to estimate the cost from a node to the goal
   function heuristic(nodeA, nodeB) {
@@ -42,7 +122,7 @@ function findPath(start, end, grid) {
   }
 
   // Initialize the open and closed lists
-  const openList = [start];
+  const openList = new MinHeap();
   const closedList = [];
 
   // Initialize the cost and parent maps
@@ -70,40 +150,32 @@ function findPath(start, end, grid) {
     return path;
   }
 
-  while (openList.length > 0) {
-    // Sort the open list based on the fScore
-    openList.sort((a, b) => fScore.get(a) - fScore.get(b));
+  openList.enqueue(start, fScore.get(start));
 
-    // Get the node with the lowest fScore (the current best option)
-    const currentNode = openList.shift();
+  while (!openList.isEmpty()) {
+    const currentNode = openList.dequeue();
 
     // Check if we have reached the goal
     if (currentNode === end) {
       return reconstructPath();
     }
 
-    // Move the current node to the closed list
     closedList.push(currentNode);
 
-    // Get the neighbors of the current node
     const neighbors = getNeighbors(currentNode);
 
     for (const neighbor of neighbors) {
-      // Calculate the tentative gScore for the neighbor
       const tentativeGScore = gScore.get(currentNode) + 1;
 
       if (!gScore.has(neighbor) || tentativeGScore < gScore.get(neighbor)) {
-        // Update the parent and cost maps
         parentMap.set(neighbor, currentNode);
         gScore.set(neighbor, tentativeGScore);
 
-        // Calculate the fScore for the neighbor (cost + heuristic)
         const hScore = heuristic(neighbor, end);
         fScore.set(neighbor, tentativeGScore + hScore);
 
-        if (!openList.includes(neighbor)) {
-          // Add the neighbor to the open list
-          openList.push(neighbor);
+        if (!closedList.includes(neighbor)) {
+          openList.enqueue(neighbor, fScore.get(neighbor));
         }
       }
     }
