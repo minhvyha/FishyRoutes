@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Node() {
+function Node({row, col}) {
   return (
     <div className='w-5 h-5 bg-white border-solid border-color border-black border' onClick={() => {}}>
       

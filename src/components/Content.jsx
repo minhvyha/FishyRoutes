@@ -11,7 +11,7 @@ function Content() {
   for (let row = 0; row < 25; row++) {
     let temp = [];
     for (let col = 0; col < 50; col++) {
-      temp.push(<Node />);
+      temp.push(<Node key={nanoid()} row={row} col={col} />);
     }
     grid.push(<Row key={nanoid()} Nodes={temp} />);
   }
