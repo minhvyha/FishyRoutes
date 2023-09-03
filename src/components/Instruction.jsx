@@ -17,7 +17,7 @@ function Instruction() {
     );
   });
   console.log(instructionList);
-  return <div className="p-1 bg-slate-200 flex">{instructionList}</div>;
+  return <div className="p-2 bg-slate-200 flex flex-row">{instructionList}</div>;
 }
 
 export default Instruction;
