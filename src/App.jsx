@@ -7,7 +7,7 @@ export const MainPageContext = React.createContext();
 
 function App() {
   let [grid, setGrid] = useState('0');
-  let [selectedNode, setSelectedNode] = useState('wall');
+  let [selectedNode, setSelectedNode] = useState('cat');
 
   return (
     <>
