@@ -15,15 +15,28 @@ function App() {
   let [visitedNode, setVisitedNode] = useState([]);
   let [shortestPath, setShortestPath] = useState([]);
 
-  function setNode() {
-
+  function setNode(row, col) {
+    setNodeFunction[selectedNode](row, col)
   }
 
   let setNodeFunction = {
-    cat: function (){
+    cat: function (row, col){
 
     },
-    
+    fish: function(row, col){
+
+    },
+    wall: function(row, col){
+
+    },
+    visited: function (row, col){
+
+    },
+    shortest: function(row, col){
+
+    }
+
+
   }
 
   return (

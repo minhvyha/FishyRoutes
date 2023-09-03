@@ -20,7 +20,7 @@ let instructions = [
     class: "bg-violet-600",
   },
   {
-    id: "shortest-path-node",
+    id: "shortest",
     name: "Shortest-path Node",
     class: "bg-yellow-300",
   },
