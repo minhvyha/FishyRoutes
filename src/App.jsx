@@ -21,10 +21,10 @@ function App() {
 
   let setNodeFunction = {
     cat: function (row, col){
-
+      setCatNode({row: row, col: col})
     },
     fish: function(row, col){
-
+      setFishNode({row: row, col: col})
     },
     wall: function(row, col){
 
