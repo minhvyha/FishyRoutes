@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import Node from "./elements/Node";
 import Row from "./elements/Row";
+import { nanoid } from "nanoid";
 
 function Content() {
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
@@ -12,7 +13,7 @@ function Content() {
     for (let col = 0; col < 50; col++) {
       temp.push(<Node />);
     }
-    grid.push(<Row Nodes={temp} />);
+    grid.push(<Row key={nanoid()} Nodes={temp} />);
   }
 
   return (
